@@ -98,15 +98,16 @@ export const CARD_COLORS = [
 
 // ─── TYPING PHRASES ────────────────────────────────────────────────────────
 export const TYPING_PHRASES = [
+  'Python Developer',
   'Full Stack Developer',
-  'React Specialist',
-  'Node.js Engineer',
-  'Cloud Architect',
+  'React Developer',
+  'Java Developer',
   'Problem Solver',
   'Open Source Contributor',
+  'Agentic AI Developer',
 ]
 
-// ─── DEFAULT PORTFOLIO DATA ────────────────────────────────────────────────
+// ─── DEFAULT DATA (fallback when API is unavailable) ──────────────────────
 export const DEFAULT_DATA = {
   name: 'Your Name',
   role: 'Full Stack Developer',
@@ -118,100 +119,83 @@ export const DEFAULT_DATA = {
   email: 'your@email.com',
   github: 'https://github.com/you',
   linkedin: 'https://linkedin.com/in/you',
-  contactSub:
-    'Open to full-time roles, freelance projects, and interesting collaborations. Don\'t hesitate to reach out.',
+  contactSub: "Open to full-time roles, freelance projects, and interesting collaborations. Don't hesitate to reach out.",
   skills: [
-    {
-      cat: 'Frontend',
-      items: ['React', 'TypeScript', 'Next.js', 'HTML5', 'CSS3', 'Tailwind', 'Vue.js', 'Redux'],
-    },
-    {
-      cat: 'Backend',
-      items: ['Node.js', 'Python', 'Express', 'FastAPI', 'Django', 'GraphQL', 'Go'],
-    },
-    {
-      cat: 'Databases',
-      items: ['PostgreSQL', 'MySQL', 'MongoDB', 'Redis', 'Supabase'],
-    },
-    {
-      cat: 'DevOps & Tools',
-      items: ['Docker', 'AWS', 'Kubernetes', 'GitHub Actions', 'Git', 'Linux', 'Nginx'],
-    },
+    { cat: 'Frontend',       items: [{ name: 'React', level: 95 }, { name: 'TypeScript', level: 88 }, { name: 'Next.js', level: 82 }] },
+    { cat: 'Backend',        items: [{ name: 'Node.js', level: 88 }, { name: 'Python', level: 92 }] },
+    { cat: 'Databases',      items: [{ name: 'PostgreSQL', level: 83 }, { name: 'MySQL', level: 82 }] },
+    { cat: 'DevOps & Tools', items: [{ name: 'Docker', level: 82 }, { name: 'Git', level: 95 }] },
   ],
-  projects: [
-    {
-      name: 'E-Commerce Platform',
-      cat: 'Web Apps',
-      desc: 'Full-stack e-commerce solution with real-time inventory, payment integration and admin dashboard.',
-      tags: ['React', 'Node.js', 'PostgreSQL'],
-      icon: '🛒',
-      live: '#',
-      github: '#',
-    },
-    {
-      name: 'AI Chat Assistant',
-      cat: 'AI / ML',
-      desc: 'LLM-powered conversational AI with context memory, RAG pipeline and streaming responses.',
-      tags: ['Python', 'LangChain', 'React'],
-      icon: '🤖',
-      live: '#',
-      github: '#',
-    },
-    {
-      name: 'Task Manager App',
-      cat: 'Mobile',
-      desc: 'Cross-platform mobile app for team task management with real-time sync and push notifications.',
-      tags: ['React Native', 'Supabase', 'Expo'],
-      icon: '✅',
-      live: '#',
-      github: '#',
-    },
-    {
-      name: 'Dev CLI Toolkit',
-      cat: 'Open Source',
-      desc: 'A collection of CLI utilities for automating common developer workflows. 500+ GitHub stars.',
-      tags: ['Node.js', 'TypeScript'],
-      icon: '⚡',
-      live: '#',
-      github: '#',
-    },
-    {
-      name: 'SaaS Dashboard',
-      cat: 'Web Apps',
-      desc: 'Analytics dashboard for SaaS metrics with real-time charts, user cohort analysis, and exports.',
-      tags: ['Next.js', 'PostgreSQL'],
-      icon: '📊',
-      live: '#',
-      github: '#',
-    },
-    {
-      name: 'Portfolio Generator',
-      cat: 'Open Source',
-      desc: 'Open source tool to generate developer portfolios from a simple config file. Used by 200+ devs.',
-      tags: ['React', 'Node.js'],
-      icon: '🎨',
-      live: '#',
-      github: '#',
-    },
+  projects: [],
+  services: [
+    { icon: '⚡', name: 'Frontend Development', desc: 'Pixel-perfect, responsive UIs with React, Next.js and modern CSS.', tag: 'React · Next.js · TypeScript' },
+    { icon: '🔧', name: 'Backend Engineering',  desc: 'Scalable REST & GraphQL APIs and robust database design.', tag: 'Node.js · Django · PostgreSQL' },
   ],
+  education: [],
+  certifications: [],
 }
 
-// ─── STORAGE HELPERS ───────────────────────────────────────────────────────
-const STORAGE_KEY = 'portfolio_data_v3'
+// ─── API HELPERS ───────────────────────────────────────────────────────────
+const API = ''  // Vite dev proxy forwards /api/* → localhost:3001
 
-export function loadData() {
+export async function loadData() {
   try {
-    const stored = localStorage.getItem(STORAGE_KEY)
-    return stored ? JSON.parse(stored) : DEFAULT_DATA
+    const res = await fetch(`${API}/api/portfolio`)
+    if (!res.ok) throw new Error('API unavailable')
+    return res.json()
   } catch {
+    console.warn('Backend unavailable — using default data')
     return DEFAULT_DATA
   }
 }
 
-export function saveData(data) {
+async function parseJson(res) {
+  const text = await res.text()
   try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(data))
-  } catch (e) {
-    console.error('Failed to save data:', e)
+    return JSON.parse(text)
+  } catch {
+    if (!res.ok) throw new Error(`Backend error (${res.status}) — is the Django server running on port 8000?`)
+    throw new Error('Server returned an unexpected response — is the Django server running on port 8000?')
   }
 }
+
+export async function loginAdmin(username, password) {
+  const res = await fetch(`${API}/api/auth/login`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ username, password }),
+  })
+  const data = await parseJson(res)
+  if (!res.ok) throw new Error(data.error || 'Login failed')
+  return data.token
+}
+
+async function apiCall(method, path, token, body) {
+  const res = await fetch(`${API}/api${path}`, {
+    method,
+    headers: {
+      'Content-Type': 'application/json',
+      ...(token ? { Authorization: `Bearer ${token}` } : {}),
+    },
+    ...(body !== undefined ? { body: JSON.stringify(body) } : {}),
+  })
+  const data = await parseJson(res)
+  if (!res.ok) throw new Error(data.error || 'Request failed')
+  return data
+}
+
+export const updateProfile = (token, profile) => apiCall('PUT', '/profile', token, profile)
+export const updateContact  = (token, contact) => apiCall('PUT', '/contact', token, contact)
+export const addProject     = (token, project) => apiCall('POST', '/projects', token, project)
+export const deleteProject  = (token, id)      => apiCall('DELETE', `/projects/${id}`, token)
+export const addSkill       = (token, skill)   => apiCall('POST', '/skills', token, skill)
+export const deleteSkill    = (token, id)      => apiCall('DELETE', `/skills/${id}`, token)
+export const sendMessage     = (form)           => apiCall('POST', '/contact/message', null, form)
+export const getMessages     = (token)          => apiCall('GET', '/messages', token)
+export const markMessageRead = (token, id)      => apiCall('PUT', `/messages/${id}/read`, token)
+export const addEducation     = (token, edu)        => apiCall('POST', '/education', token, edu)
+export const deleteEducation  = (token, id)         => apiCall('DELETE', `/education/${id}`, token)
+export const updateSkillItem  = (token, id, patch)  => apiCall('PUT',    `/skills/item/${id}`,       token, patch)
+export const deleteSkillItem  = (token, id)         => apiCall('DELETE',  `/skills/item/${id}`,       token)
+export const addCertification    = (token, cert)    => apiCall('POST',   '/certifications',            token, cert)
+export const deleteCertification = (token, id)      => apiCall('DELETE', `/certifications/${id}`,     token)

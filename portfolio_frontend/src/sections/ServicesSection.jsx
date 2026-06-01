@@ -1,21 +1,12 @@
 import Reveal from '../components/Reveal'
 import SectionHeader from '../components/SectionHeader'
 
-const SERVICES = [
-  { icon: '⚡', name: 'Frontend Development', desc: 'Pixel-perfect, responsive UIs with React, Next.js and modern CSS. Fast, accessible, and beautiful.', tag: 'React · Next.js · TypeScript' },
-  { icon: '🔧', name: 'Backend Engineering', desc: 'Scalable REST & GraphQL APIs, microservices architecture, and robust database design.', tag: 'Node.js · Django · PostgreSQL' },
-  { icon: '☁️', name: 'Cloud & DevOps', desc: 'CI/CD pipelines, Docker/Kubernetes deployments, and cloud infrastructure on AWS.', tag: 'AWS · Docker · K8s' },
-  { icon: '📱', name: 'Mobile Development', desc: 'Cross-platform mobile apps using React Native that feel native on both iOS and Android.', tag: 'React Native · Expo' },
-  { icon: '🎨', name: 'UI/UX Design', desc: 'Design systems, prototypes and user flows that delight users and drive engagement.', tag: 'Figma · Design Systems' },
-  { icon: '🤖', name: 'AI Integration', desc: 'Integrate LLMs, build AI-powered features and automate workflows with modern AI tooling.', tag: 'OpenAI · LangChain · RAG' },
-]
-
-export default function ServicesSection() {
+export default function ServicesSection({ services = [] }) {
   return (
     <section id="sec-services" style={{ padding: '5rem 2rem', background: 'var(--bg2)' }}>
       <Reveal>
         <SectionHeader
-          num="02"
+          num="03"
           tag="services"
           title="What I"
           titleAccent="Offer"
@@ -26,14 +17,14 @@ export default function ServicesSection() {
       <div
         style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
+          gridTemplateColumns: 'repeat(2, 1fr)',
           gap: '1.25rem',
-          maxWidth: 1000,
+          maxWidth: 800,
           margin: '0 auto',
         }}
       >
-        {SERVICES.map((svc, i) => (
-          <Reveal key={svc.name} delay={i * 0.06}>
+        {services.map((svc, i) => (
+          <Reveal key={svc.id ?? svc.name} delay={i * 0.06}>
             <div
               className="svc-card"
               style={{

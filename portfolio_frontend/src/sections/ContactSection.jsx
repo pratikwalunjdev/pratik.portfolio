@@ -1,11 +1,37 @@
+import { useState } from 'react'
 import Reveal from '../components/Reveal'
 import SectionHeader from '../components/SectionHeader'
+import { sendMessage } from '../data'
 
-export default function ContactSection({ data }) {
+export default function ContactSection({ data, onToast }) {
+  const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' })
+  const [sending, setSending] = useState(false)
+
+  function set(field) {
+    return (e) => setForm((f) => ({ ...f, [field]: e.target.value }))
+  }
+
+  async function handleSubmit(e) {
+    e.preventDefault()
+    if (!form.name.trim() || !form.email.trim() || !form.message.trim()) {
+      return onToast('Name, email, and message are required', true)
+    }
+    setSending(true)
+    try {
+      await sendMessage(form)
+      setForm({ name: '', email: '', subject: '', message: '' })
+      onToast('Message sent!')
+    } catch (err) {
+      onToast(err.message || 'Failed to send message', true)
+    } finally {
+      setSending(false)
+    }
+  }
+
   return (
     <section id="sec-contact" style={{ padding: '5rem 2rem', background: 'var(--bg)', textAlign: 'center' }}>
       <Reveal>
-        <SectionHeader num="05" tag="contact" title="Get In" titleAccent="Touch" />
+        <SectionHeader num="07" tag="contact" title="Get In" titleAccent="Touch" />
 
         <div
           style={{
@@ -61,7 +87,8 @@ export default function ContactSection({ data }) {
         </div>
 
         {/* Contact form */}
-        <div
+        <form
+          onSubmit={handleSubmit}
           style={{
             background: 'var(--surf)',
             border: '1px solid var(--bd)',
@@ -73,12 +100,12 @@ export default function ContactSection({ data }) {
           }}
         >
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12, marginBottom: 12 }}>
-            {[['Name', 'Your name'], ['Email', 'your@email.com']].map(([label, ph]) => (
-              <div key={label}>
+            {[['name', 'Name', 'Your name'], ['email', 'Email', 'your@email.com']].map(([field, label, ph]) => (
+              <div key={field}>
                 <div className="mono" style={{ fontSize: '.62rem', color: 'var(--tx3)', textTransform: 'uppercase', letterSpacing: '.1em', marginBottom: 5 }}>
                   {label}
                 </div>
-                <input className="contact-input" placeholder={ph} />
+                <input className="contact-input" placeholder={ph} value={form[field]} onChange={set(field)} />
               </div>
             ))}
           </div>
@@ -87,20 +114,25 @@ export default function ContactSection({ data }) {
             <div className="mono" style={{ fontSize: '.62rem', color: 'var(--tx3)', textTransform: 'uppercase', letterSpacing: '.1em', marginBottom: 5 }}>
               Subject
             </div>
-            <input className="contact-input" placeholder="Project idea / Job opportunity" />
+            <input className="contact-input" placeholder="Project idea / Job opportunity" value={form.subject} onChange={set('subject')} />
           </div>
 
           <div style={{ marginBottom: 16 }}>
             <div className="mono" style={{ fontSize: '.62rem', color: 'var(--tx3)', textTransform: 'uppercase', letterSpacing: '.1em', marginBottom: 5 }}>
               Message
             </div>
-            <textarea className="contact-input" placeholder="Tell me about your project..." rows={4} />
+            <textarea className="contact-input" placeholder="Tell me about your project..." rows={4} value={form.message} onChange={set('message')} />
           </div>
 
-          <button className="btn-primary" style={{ width: '100%', borderRadius: 8, padding: '.85rem' }}>
-            Send Message →
+          <button
+            type="submit"
+            className="btn-primary"
+            disabled={sending}
+            style={{ width: '100%', borderRadius: 8, padding: '.85rem', opacity: sending ? 0.7 : 1 }}
+          >
+            {sending ? 'Sending…' : 'Send Message →'}
           </button>
-        </div>
+        </form>
       </Reveal>
     </section>
   )

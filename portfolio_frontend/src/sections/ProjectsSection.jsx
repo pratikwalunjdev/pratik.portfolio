@@ -17,20 +17,51 @@ function ProjectCard({ project, index }) {
         position: 'relative',
       }}
     >
-      {/* Thumbnail */}
+      {/* Thumbnail — stylised project name */}
       <div
         style={{
           height: 130,
-          background: `linear-gradient(135deg,${color}22,var(--bg3))`,
+          background: `linear-gradient(135deg,${color}18,var(--bg3))`,
           display: 'flex',
+          flexDirection: 'column',
           alignItems: 'center',
           justifyContent: 'center',
-          fontSize: '2.2rem',
+          padding: '0 1.2rem',
           position: 'relative',
+          overflow: 'hidden',
+          gap: 4,
         }}
       >
-        {project.icon}
-        <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: 3, background: color }} />
+        {/* large initials */}
+        <div
+          className="mono"
+          style={{
+            fontSize: '2.4rem',
+            fontWeight: 900,
+            letterSpacing: '-0.04em',
+            lineHeight: 1,
+            color: color,
+            userSelect: 'none',
+          }}
+        >
+          {project.name.split(' ').slice(0, 2).map(w => w[0]).join('').toUpperCase()}
+        </div>
+        {/* full name */}
+        <div
+          style={{
+            fontSize: '.6rem',
+            fontWeight: 600,
+            color: 'var(--tx3)',
+            textTransform: 'uppercase',
+            letterSpacing: '.12em',
+            textAlign: 'center',
+            lineHeight: 1.4,
+            maxWidth: '90%',
+          }}
+        >
+          {project.name}
+        </div>
+        <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: 2, background: color }} />
       </div>
 
       {/* Number badge */}
@@ -121,7 +152,7 @@ export default function ProjectsSection({ projects }) {
     <section id="sec-projects" style={{ padding: '5rem 2rem', background: 'var(--bg2)' }}>
       <Reveal>
         <SectionHeader
-          num="04"
+          num="05"
           tag="projects"
           title="My"
           titleAccent="Work"

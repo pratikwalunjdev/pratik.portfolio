@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import GlobalStyle from './components/GlobalStyle'
 import Navbar from './components/Navbar'
 import HeroSection from './sections/HeroSection'
@@ -9,22 +9,64 @@ import ProjectsSection from './sections/ProjectsSection'
 import ContactSection from './sections/ContactSection'
 import Footer from './sections/Footer'
 import AdminPanel from './admin/AdminPanel'
-import { loadData, saveData } from './data'
+import EducationSection from './sections/EducationSection'
+import CertificationsSection from './sections/CertificationsSection'
+import { loadData, DEFAULT_DATA } from './data'
 
 export default function Portfolio() {
-  const [data, setData] = useState(loadData)
+  const [data, setData] = useState(DEFAULT_DATA)
+  const [loading, setLoading] = useState(true)
   const [adminOpen, setAdminOpen] = useState(false)
-  const [toast, setToast] = useState(false)
+  const [toast, setToast] = useState(null)
 
-  function handleUpdate(newData) {
-    setData(newData)
-    saveData(newData)
-    showToast()
+  const refreshData = useCallback(async () => {
+    const d = await loadData()
+    setData(d)
+  }, [])
+
+  useEffect(() => {
+    loadData()
+      .then((d) => { setData(d); setLoading(false) })
+      .catch(() => setLoading(false))
+  }, [])
+
+  function showToast(msg = 'Saved successfully!', isError = false) {
+    setToast({ msg, isError })
+    setTimeout(() => setToast(null), 2800)
   }
 
-  function showToast() {
-    setToast(true)
-    setTimeout(() => setToast(false), 2400)
+  if (loading) {
+    return (
+      <>
+        <GlobalStyle />
+        <div
+          style={{
+            minHeight: '100vh',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            background: 'var(--bg)',
+            flexDirection: 'column',
+            gap: '1rem',
+          }}
+        >
+          <div
+            style={{
+              width: 40,
+              height: 40,
+              borderRadius: '50%',
+              border: '3px solid var(--bd2)',
+              borderTopColor: 'var(--pu)',
+              animation: 'spin 0.8s linear infinite',
+            }}
+          />
+          <p className="mono" style={{ color: 'var(--tx3)', fontSize: '.8rem' }}>
+            Loading portfolio…
+          </p>
+          <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
+        </div>
+      </>
+    )
   }
 
   return (
@@ -33,10 +75,12 @@ export default function Portfolio() {
       <Navbar name={data.name} />
       <HeroSection data={data} />
       <AboutSection data={data} />
-      <ServicesSection />
+      <EducationSection education={data.education} />
+      <ServicesSection services={data.services} />
       <SkillsSection skills={data.skills} />
       <ProjectsSection projects={data.projects} />
-      <ContactSection data={data} />
+      <CertificationsSection certifications={data.certifications} />
+      <ContactSection data={data} onToast={showToast} />
       <Footer name={data.name} />
 
       {/* Admin FAB */}
@@ -67,16 +111,15 @@ export default function Portfolio() {
         ⚙
       </button>
 
-      {/* Admin panel */}
       {adminOpen && (
         <AdminPanel
           data={data}
-          onUpdate={handleUpdate}
+          onRefresh={refreshData}
+          onToast={showToast}
           onClose={() => setAdminOpen(false)}
         />
       )}
 
-      {/* Toast */}
       {toast && (
         <div
           style={{
@@ -84,16 +127,16 @@ export default function Portfolio() {
             bottom: '5rem',
             right: '1.5rem',
             background: 'var(--surf)',
-            border: '1px solid rgba(0,212,180,.4)',
+            border: `1px solid ${toast.isError ? 'rgba(239,68,68,.4)' : 'rgba(0,212,180,.4)'}`,
             borderRadius: 8,
             padding: '.65rem 1.1rem',
             fontSize: '.82rem',
-            color: 'var(--te)',
+            color: toast.isError ? '#f87171' : 'var(--te)',
             zIndex: 400,
             animation: 'panelFade .3s ease',
           }}
         >
-          ✓ Saved successfully!
+          {toast.isError ? '✕' : '✓'} {toast.msg}
         </div>
       )}
     </>
