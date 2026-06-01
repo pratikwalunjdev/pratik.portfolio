@@ -136,8 +136,11 @@ export const DEFAULT_DATA = {
 }
 
 // ─── API HELPERS ───────────────────────────────────────────────────────────
-const API = ''  // Vite dev proxy forwards /api/* → localhost:3001
-
+//const API = 'pratikportfolio-production.up.railway.app'  // Vite dev proxy forwards /api/* → localhost:3001
+const API =
+  import.meta.env.PROD
+    ? 'https://pratikportfolio-production.up.railway.app'
+    : 'http://localhost:8000'
 export async function loadData() {
   try {
     const res = await fetch(`${API}/api/portfolio`)

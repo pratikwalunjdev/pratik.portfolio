@@ -7,8 +7,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 load_dotenv(BASE_DIR / '.env')
 
 SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-dev-key')
-DEBUG = os.getenv('DEBUG', 'True') == 'True'
-ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',')
+
+# Production
+DEBUG = os.getenv('DEBUG', 'False') == 'True'
+
+ALLOWED_HOSTS = [
+    'localhost',
+    '127.0.0.1',
+    '.railway.app',
+    'pratikwalunjdev.thedebuggersjournal.in',
+]
 
 INSTALLED_APPS = [
     'django.contrib.auth',
@@ -28,11 +36,6 @@ ROOT_URLCONF = 'portfolio_project.urls'
 WSGI_APPLICATION = 'portfolio_project.wsgi.application'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-print("MYSQLHOST =", os.getenv("MYSQLHOST"))
-print("MYSQLDATABASE =", os.getenv("MYSQLDATABASE"))
-print("MYSQLUSER =", os.getenv("MYSQLUSER"))
-print("MYSQLPORT =", os.getenv("MYSQLPORT"))
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
@@ -47,7 +50,6 @@ DATABASES = {
         }
     }
 }
-
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
@@ -65,8 +67,7 @@ SIMPLE_JWT = {
 }
 
 CORS_ALLOWED_ORIGINS = [
-    'http://localhost:5173',
-    'http://127.0.0.1:5173',
+    'https://pratikwalunjdev.thedebuggersjournal.in',
 ]
 
 APPEND_SLASH = False
@@ -74,3 +75,6 @@ APPEND_SLASH = False
 LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'UTC'
 USE_TZ = True
+
+STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
