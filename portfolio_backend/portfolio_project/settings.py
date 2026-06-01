@@ -28,6 +28,11 @@ ROOT_URLCONF = 'portfolio_project.urls'
 WSGI_APPLICATION = 'portfolio_project.wsgi.application'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+print("MYSQLHOST =", os.getenv("MYSQLHOST"))
+print("MYSQLDATABASE =", os.getenv("MYSQLDATABASE"))
+print("MYSQLUSER =", os.getenv("MYSQLUSER"))
+print("MYSQLPORT =", os.getenv("MYSQLPORT"))
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
