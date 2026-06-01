@@ -99,7 +99,7 @@ export default function ContactSection({ data, onToast }) {
             textAlign: 'left',
           }}
         >
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12, marginBottom: 12 }}>
+          <div className="contact-2col">
             {[['name', 'Name', 'Your name'], ['email', 'Email', 'your@email.com']].map(([field, label, ph]) => (
               <div key={field}>
                 <div className="mono" style={{ fontSize: '.62rem', color: 'var(--tx3)', textTransform: 'uppercase', letterSpacing: '.1em', marginBottom: 5 }}>

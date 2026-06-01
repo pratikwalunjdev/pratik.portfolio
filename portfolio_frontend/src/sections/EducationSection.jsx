@@ -19,7 +19,7 @@ function TimelineNode({ edu, index, isVisible }) {
       }}
     >
       {/* Left column: node + vertical connector */}
-      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginRight: '1.5rem', flexShrink: 0 }}>
+      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginRight: 'clamp(.5rem, 2vw, 1.5rem)', flexShrink: 0 }}>
         {/* Node */}
         <div
           style={{
@@ -160,7 +160,7 @@ export default function EducationSection({ education = [] }) {
         />
       </div>
 
-      <div ref={ref} style={{ maxWidth: 700, margin: '0 auto' }}>
+      <div ref={ref} style={{ maxWidth: 700, margin: '0 auto', width: '100%' }}>
         {education.map((edu, i) => (
           <TimelineNode key={edu.id} edu={edu} index={i} isVisible={visible} />
         ))}

@@ -166,7 +166,7 @@ export default function CertificationsSection({ certifications = [] }) {
           maxWidth: 960,
           margin: '0 auto',
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fill, minmax(420px, 1fr))',
+          gridTemplateColumns: 'repeat(auto-fill, minmax(min(420px, 100%), 1fr))',
           gap: '1.25rem',
         }}
       >

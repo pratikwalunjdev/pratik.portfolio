@@ -18,7 +18,7 @@ function Field({ label, id, value, onChange, textarea, type = 'text' }) {
 }
 
 function Row({ children }) {
-  return <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>{children}</div>
+  return <div className="admin-form-row">{children}</div>
 }
 
 function Spinner() {
@@ -381,7 +381,7 @@ export default function AdminPanel({ data, onRefresh, onToast, onClose }) {
                       const pct   = level
                       const label = pct >= 90 ? 'Expert' : pct >= 75 ? 'Advanced' : pct >= 55 ? 'Intermediate' : 'Learning'
                       return (
-                        <div key={id} style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 10 }}>
+                        <div key={id} style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 10, flexWrap: 'wrap', minWidth: 0 }}>
                           {/* Skill name */}
                           <span style={{ width: 120, fontSize: '.8rem', color: 'var(--tx2)', flexShrink: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                             {item.name}

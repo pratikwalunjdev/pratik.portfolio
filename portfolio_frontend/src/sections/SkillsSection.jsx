@@ -28,7 +28,7 @@ function SkillBar({ name, level, gradient, delay }) {
         <SkillLogo name={name} size={22} />
         <span style={{ fontSize: '.83rem', fontWeight: 500, color: 'var(--tx)', flex: 1 }}>{name}</span>
         <span
-          className="mono"
+          className="mono skill-label-hide"
           style={{
             fontSize: '.6rem',
             padding: '.15rem .4rem',
@@ -113,7 +113,7 @@ export default function SkillsSection({ skills }) {
           maxWidth: 960,
           margin: '0 auto',
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(380px, 1fr))',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(min(380px, 100%), 1fr))',
           gap: '2rem 3.5rem',
         }}
       >

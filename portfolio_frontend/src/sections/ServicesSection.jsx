@@ -17,7 +17,7 @@ export default function ServicesSection({ services = [] }) {
       <div
         style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(2, 1fr)',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(min(280px, 100%), 1fr))',
           gap: '1.25rem',
           maxWidth: 800,
           margin: '0 auto',

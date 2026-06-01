@@ -11,19 +11,10 @@ export default function AboutSection({ data }) {
         <SectionHeader num="01" tag="about" title="Who" titleAccent="I Am" />
       </Reveal>
 
-      <div
-        style={{
-          display: 'grid',
-          gridTemplateColumns: '1fr 1fr',
-          gap: '4rem',
-          alignItems: 'center',
-          maxWidth: 1000,
-          margin: '0 auto',
-        }}
-      >
+      <div className="about-grid">
         {/* Avatar */}
         <Reveal>
-          <div style={{ display: 'flex', justifyContent: 'center' }}>
+          <div className="about-avatar" style={{ display: 'flex', justifyContent: 'center' }}>
             <div style={{ position: 'relative' }}>
               <div
                 style={{

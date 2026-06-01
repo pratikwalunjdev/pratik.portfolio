@@ -117,6 +117,60 @@ export const GLOBAL_CSS = `
   /* ── SECTION TAG ─────────────────────────────────── */
   .s-tag { font-family:var(--mono); font-size:.68rem; color:var(--te); letter-spacing:.2em; text-transform:uppercase; display:flex; align-items:center; justify-content:center; gap:10px; margin-bottom:8px; }
   .s-tag::before, .s-tag::after { content:''; width:28px; height:1px; background:rgba(0,212,180,.35); display:block; }
+
+  /* ── RESPONSIVE NAVBAR ──────────────────────────── */
+  .nav-links-desktop { display:flex; gap:1.5rem; }
+  .nav-hire-desktop  { display:block; }
+  .nav-hamburger     { display:none; flex-direction:column; justify-content:center; gap:5px; background:none; border:none; padding:6px; cursor:pointer; }
+  .nav-hamburger span { display:block; width:22px; height:2px; background:var(--tx); border-radius:2px; transition:transform .3s, opacity .3s; }
+  .nav-drawer { display:none; }
+
+  /* ── RESPONSIVE GRIDS ───────────────────────────── */
+  .about-grid      { display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:center; max-width:1000px; margin:0 auto; }
+  .contact-2col    { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:12px; }
+  .admin-form-row  { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+
+  /* ── BREAKPOINT: TABLET ≤ 900px ─────────────────── */
+  @media (max-width: 900px) {
+    .about-grid { grid-template-columns:1fr !important; gap:2.5rem !important; }
+    .about-avatar { display:flex; justify-content:center; }
+  }
+
+  /* ── BREAKPOINT: MOBILE ≤ 768px ─────────────────── */
+  @media (max-width: 768px) {
+    /* Navbar */
+    .nav-links-desktop { display:none; }
+    .nav-hire-desktop  { display:none; }
+    .nav-hamburger     { display:flex; }
+    .nav-drawer {
+      display:flex; flex-direction:column; gap:1rem;
+      position:fixed; top:53px; left:0; right:0;
+      background:rgba(15,15,20,.97); backdrop-filter:blur(16px);
+      border-bottom:1px solid var(--bd);
+      padding:1.5rem 2rem 2rem; z-index:98;
+    }
+    .nav-drawer a { font-size:.88rem; color:var(--tx2); letter-spacing:.1em; text-transform:uppercase; padding:.25rem 0; }
+
+    /* Section horizontal padding */
+    section[id] { padding-left:1.25rem !important; padding-right:1.25rem !important; }
+
+    /* Grids */
+    .contact-2col  { grid-template-columns:1fr !important; }
+    .admin-form-row { grid-template-columns:1fr !important; }
+
+    /* Admin panel tabs */
+    .admin-tab { font-size:.6rem !important; padding:.35rem .28rem !important; }
+
+    /* Skill slider label */
+    .skill-label-hide { display:none; }
+  }
+
+  /* ── BREAKPOINT: SMALL MOBILE ≤ 480px ───────────── */
+  @media (max-width: 480px) {
+    section[id] { padding-top:3rem !important; padding-bottom:3rem !important; }
+    .admin-form-row { grid-template-columns:1fr !important; }
+    .btn-primary, .btn-outline { padding:.72rem 1.5rem !important; font-size:.86rem !important; }
+  }
 `
 
 // ─── SECTION WRAPPER ───────────────────────────────────────────────────────
