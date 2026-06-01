@@ -1,171 +1,201 @@
-# Portfolio — Full Stack Developer Portfolio
+<div align="center">
 
-A fully dynamic, database-driven developer portfolio built with **React + Vite** on the frontend and **Django + MySQL** on the backend. Every section is editable through a built-in admin panel without touching any code.
+# 🖥️ Developer Portfolio
 
----
+### A fully dynamic, database-driven portfolio — every section editable live from a built-in admin panel.
 
-## Screenshots
+[![React](https://img.shields.io/badge/React-18.2-61DAFB?style=for-the-badge&logo=react&logoColor=white)](https://react.dev)
+[![Vite](https://img.shields.io/badge/Vite-5-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev)
+[![Django](https://img.shields.io/badge/Django-5-092E20?style=for-the-badge&logo=django&logoColor=white)](https://djangoproject.com)
+[![MySQL](https://img.shields.io/badge/MySQL-8-4479A1?style=for-the-badge&logo=mysql&logoColor=white)](https://mysql.com)
+[![JWT](https://img.shields.io/badge/JWT-Auth-000000?style=for-the-badge&logo=jsonwebtokens&logoColor=white)](https://jwt.io)
 
-### Hero Section
-![Hero Section](docs/screenshots/hero.png)
-> Typing animation cycles through roles (Python Developer, Full Stack Developer, React Developer, Java Developer, Problem Solver, Open Source Contributor, Agentic AI Developer). Animated terminal widget on the right.
-
-### Education — Roadmap Timeline
-![Education Section](docs/screenshots/education.png)
-> Vertical timeline with animated nodes, connector lines, and staggered card reveals triggered by scroll.
-
-### Skills — Expertise Meters
-![Skills Section](docs/screenshots/skills.png)
-> Progress bars grouped by category (Frontend, Backend, Databases, DevOps & Tools) with live expertise labels (Expert / Advanced / Intermediate / Learning) and an infinite scrolling skill marquee.
-
-### Services
-![Services Section](docs/screenshots/services.png)
-> Clean 2×2 card grid. No orphan cards. Managed via admin panel.
-
-### Projects
-![Projects Section](docs/screenshots/projects.png)
-> Filterable project cards. Stylised project-name thumbnail (large initials + full name) instead of emoji. Category filter tabs.
-
-### Certifications
-![Certifications Section](docs/screenshots/certifications.png)
-> Animated card grid. Each card has a coloured accent bar that scales in, a badge icon, issuer name, date, description, and optional credential link.
-
-### Admin Panel — Skills Tab
-![Admin Panel Skills](docs/screenshots/admin_skills.png)
-> Interactive range sliders per skill. Drag to set expertise level 0–100. Auto-saves 600 ms after you stop dragging. ✓ indicator confirms save. ✕ removes individual skill.
-
-### Admin Panel — Certifications Tab
-![Admin Panel Certs](docs/screenshots/admin_certs.png)
-> Full CRUD for certifications: title, issuer, date, credential URL, description.
+</div>
 
 ---
 
-## Features
+## 📸 Screenshots
 
-| Area | What's included |
+> **To add real screenshots** — save images to `docs/screenshots/` with the names shown below and they will appear here automatically.
+
+<table>
+  <tr>
+    <td align="center" width="50%">
+      <b>🏠 Hero Section</b><br/>
+      <sub>Typing animation · Animated terminal widget · Status badge</sub><br/><br/>
+      <code>docs/screenshots/hero.png</code>
+    </td>
+    <td align="center" width="50%">
+      <b>🎓 Education — Roadmap Timeline</b><br/>
+      <sub>Animated nodes · Growing connector lines · Staggered card reveals</sub><br/><br/>
+      <code>docs/screenshots/education.png</code>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <b>⚡ Skills — Expertise Meters</b><br/>
+      <sub>Progress bars per skill · Expert/Advanced/Intermediate badges · Infinite marquee</sub><br/><br/>
+      <code>docs/screenshots/skills.png</code>
+    </td>
+    <td align="center">
+      <b>🚀 Projects</b><br/>
+      <sub>Filterable grid · Stylised name thumbnail · Live & GitHub links</sub><br/><br/>
+      <code>docs/screenshots/projects.png</code>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <b>🏆 Certifications</b><br/>
+      <sub>Scroll-triggered entrance · Accent bar animation · Credential links</sub><br/><br/>
+      <code>docs/screenshots/certifications.png</code>
+    </td>
+    <td align="center">
+      <b>⚙️ Admin Panel — Skill Sliders</b><br/>
+      <sub>Drag to set level · Debounced auto-save · Live label badge</sub><br/><br/>
+      <code>docs/screenshots/admin_skills.png</code>
+    </td>
+  </tr>
+</table>
+
+---
+
+## ✨ Features
+
+| Feature | Details |
 |---|---|
-| **Dynamic data** | Every section (profile, skills, projects, services, education, certifications, contact) is stored in MySQL and editable live |
-| **Admin panel** | Password-protected in-app admin — no separate Django admin UI needed |
-| **Skill sliders** | Drag range cursor in the admin panel to set expertise level per skill; auto-saves with debounce |
-| **Education timeline** | Animated roadmap with pulsing nodes, growing connector lines, and staggered card reveals |
-| **Certifications** | Animated card grid with scroll-triggered entrance |
-| **Contact form** | Submissions stored in DB; viewable in the admin panel's Messages tab |
-| **JWT auth** | Stateless admin authentication; token valid for 24 h |
-| **Availability badge** | One-click Available / Busy / Not Available toggle in admin |
-| **Typing animation** | Configurable role phrases in `data.js` |
+| 🗄️ **Fully Dynamic** | Every section (profile, skills, projects, services, education, certifications, contact) stored in MySQL |
+| 🔐 **JWT Admin Panel** | Built-in password-protected admin — no separate Django admin UI required |
+| 🎚️ **Skill Level Sliders** | Drag a range cursor in admin to set expertise 0–100; auto-saves with 600 ms debounce |
+| 🗺️ **Education Timeline** | Animated roadmap with pulsing nodes, growing connector lines, and staggered reveals |
+| 🏆 **Certifications Grid** | Scroll-triggered card entrance with coloured accent bars and credential links |
+| 💬 **Contact Form** | Submissions stored in DB and viewable in admin's Messages tab |
+| 🟢 **Availability Toggle** | One-click Available / Busy / Not Available — updates the status badge site-wide |
+| 🔄 **Typing Animation** | Fully configurable role phrases cycling in the hero section |
 
 ---
 
-## Tech Stack
+## 🛠️ Tech Stack
 
 ### Frontend
-| Tool | Version | Purpose |
+| Tool | Version | Role |
 |---|---|---|
-| React | 18.2 | UI framework |
-| Vite | 5 | Build tool + dev server |
-| CSS-in-JS | — | Inline styles + global CSS via `GlobalStyle.jsx` |
-| Space Mono | — | Monospace font (Google Fonts) |
-| Outfit | — | Primary sans-serif font (Google Fonts) |
+| **React** | 18.2 | UI framework |
+| **Vite** | 5 | Dev server + bundler |
+| **CSS-in-JS** | — | Inline styles + global CSS |
+| **Space Mono / Outfit** | — | Typography (Google Fonts) |
 
 ### Backend
-| Tool | Version | Purpose |
+| Tool | Version | Role |
 |---|---|---|
-| Django | 5.x | Web framework |
-| Django REST Framework | 3.15 | API layer |
-| djangorestframework-simplejwt | 5.3 | JWT authentication |
-| django-cors-headers | 4.3 | CORS for Vite dev server |
-| PyMySQL | 1.1 | Pure-Python MySQL driver |
-| MySQL | 8.x | Primary database |
-| python-dotenv | 1.0 | `.env` config loading |
+| **Django** | 5.x | Web framework |
+| **Django REST Framework** | 3.15 | REST API layer |
+| **djangorestframework-simplejwt** | 5.3 | JWT authentication |
+| **django-cors-headers** | 4.3 | CORS for Vite dev proxy |
+| **PyMySQL** | 1.1 | Pure-Python MySQL driver |
+| **MySQL** | 8.x | Primary database |
+| **python-dotenv** | 1.0 | `.env` configuration |
 
 ---
 
-## Project Structure
+## 📂 Project Structure
 
 ```
 portfolio/
-├── portfolio_backend/               # Django project
+├── README.md
+│
+├── portfolio_backend/                   # Django project
 │   ├── manage.py
 │   ├── requirements.txt
-│   ├── .env                         # Your local env vars (git-ignored)
-│   ├── .env.example                 # Template
-│   ├── portfolio_project/           # Django settings / URLs
-│   │   ├── settings.py
-│   │   ├── urls.py
+│   ├── .env                             # Local environment variables (git-ignored)
+│   ├── .env.example                     # Template — copy to .env
+│   │
+│   ├── portfolio_project/               # Django config package
+│   │   ├── settings.py                  # All settings (reads from .env)
+│   │   ├── urls.py                      # Root URL conf (includes api.urls)
 │   │   └── wsgi.py
-│   ├── api/                         # Single Django app
-│   │   ├── models.py                # All DB models
-│   │   ├── views.py                 # All API views
-│   │   ├── urls.py                  # All API routes
-│   │   ├── apps.py                  # Auto-seed on migrate
-│   │   ├── exceptions.py            # Custom DRF exception handler
-│   │   └── management/commands/
-│   │       └── setup_admin.py       # python manage.py setup_admin
+│   │
+│   ├── api/                             # Single Django app — all logic lives here
+│   │   ├── models.py                    # All DB models
+│   │   ├── views.py                     # All API views (PortfolioView, LoginView, …)
+│   │   ├── urls.py                      # All API routes
+│   │   ├── apps.py                      # AppConfig — auto-seeds DB on migrate
+│   │   ├── exceptions.py                # Custom DRF exception handler (returns JSON for 500s)
+│   │   └── management/
+│   │       └── commands/
+│   │           └── setup_admin.py       # python manage.py setup_admin
+│   │
 │   └── database/
-│       └── schema.sql               # Creates the MySQL database
+│       └── schema.sql                   # Creates the MySQL database (run once)
 │
-└── portfolio_frontend/              # React + Vite project
-    ├── vite.config.js               # Dev proxy → localhost:8000
-    ├── src/
-    │   ├── Portfolio.jsx            # Root layout, data fetch
-    │   ├── data.js                  # API helpers + constants
-    │   ├── hooks.js                 # Typing effect, reveal hooks
-    │   ├── admin/
-    │   │   └── AdminPanel.jsx       # Full admin UI
-    │   ├── components/
-    │   │   ├── Navbar.jsx
-    │   │   ├── Reveal.jsx           # Scroll-based fade-in
-    │   │   ├── SectionHeader.jsx
-    │   │   └── SkillLogo.jsx        # Branded skill badge
-    │   └── sections/
-    │       ├── HeroSection.jsx      # Typing effect + terminal
-    │       ├── AboutSection.jsx     # Bio, stats, status
-    │       ├── EducationSection.jsx # Roadmap timeline
-    │       ├── ServicesSection.jsx  # 2×2 service cards
-    │       ├── SkillsSection.jsx    # Expertise meters + marquee
-    │       ├── ProjectsSection.jsx  # Filterable project grid
-    │       ├── CertificationsSection.jsx
-    │       ├── ContactSection.jsx   # Form + social links
-    │       └── Footer.jsx
+└── portfolio_frontend/                  # React + Vite project
+    ├── vite.config.js                   # Dev proxy: /api → localhost:8000
+    ├── index.html
+    ├── package.json
+    └── src/
+        ├── Portfolio.jsx                # Root layout — fetches data, renders all sections
+        ├── data.js                      # API helpers, constants, DEFAULT_DATA fallback
+        ├── hooks.js                     # useTypingEffect, useReveal
+        ├── styles.js                    # CSS variables & global animation keyframes
+        │
+        ├── admin/
+        │   └── AdminPanel.jsx           # Full in-app admin UI (8 tabs)
+        │
+        ├── components/
+        │   ├── Navbar.jsx               # Sticky navigation
+        │   ├── Reveal.jsx               # Scroll-triggered fade-in wrapper
+        │   ├── SectionHeader.jsx        # Numbered section headers
+        │   └── SkillLogo.jsx            # Branded skill badge (abbr + colour)
+        │
+        └── sections/
+            ├── HeroSection.jsx          # Typing effect + animated terminal
+            ├── AboutSection.jsx         # Bio, stats, availability status
+            ├── EducationSection.jsx     # Roadmap timeline animation
+            ├── ServicesSection.jsx      # 2×2 service cards
+            ├── SkillsSection.jsx        # Expertise progress bars + marquee
+            ├── ProjectsSection.jsx      # Filterable project grid
+            ├── CertificationsSection.jsx# Animated certification cards
+            ├── ContactSection.jsx       # Form (saves to DB) + social links
+            └── Footer.jsx
 ```
 
 ---
 
-## Database Schema
+## 🗃️ Database Schema
 
-| Table | Purpose |
+| Table | Key Columns |
 |---|---|
-| `api_profile` | Name, role, bio, location, experience, status |
-| `api_contactinfo` | Email, GitHub, LinkedIn, contact subtitle |
-| `api_skillcategory` | Skill category (Frontend, Backend, …) |
-| `api_skill` | Individual skill with name and `level` (0–100) |
-| `api_project` | Project metadata, tags, links |
-| `api_service` | "What I Offer" cards |
-| `api_education` | Degree, institution, duration, grade |
-| `api_certification` | Cert title, issuer, date, credential URL |
-| `api_contactmessage` | Contact form submissions |
-| `auth_user` | Django admin users (JWT login) |
+| `api_profile` | `name`, `role`, `bio`, `exp`, `loc`, `projcount`, `status` |
+| `api_contactinfo` | `email`, `github`, `linkedin`, `contact_subtitle` |
+| `api_skillcategory` | `name`, `display_order` |
+| `api_skill` | `category_id`, `name`, `level` (0–100), `display_order` |
+| `api_project` | `name`, `category`, `description`, `tags` (JSON), `icon`, `live_url`, `github_url` |
+| `api_service` | `icon`, `name`, `description`, `tag` |
+| `api_education` | `degree`, `institution`, `duration`, `grade`, `description` |
+| `api_certification` | `title`, `issuer`, `date`, `credential_url`, `description` |
+| `api_contactmessage` | `sender_name`, `email`, `subject`, `message`, `is_read` |
+| `auth_user` | Django's built-in user table (used for admin JWT login) |
 
 ---
 
-## Prerequisites
+## 🚀 Quick Start
 
-- **Python** 3.10+ (tested on 3.13)
-- **Node.js** 18+ and npm
-- **MySQL** 8.0+
+### Prerequisites
+- Python 3.10+
+- Node.js 18+ and npm
+- MySQL 8.0+
 
 ---
 
-## Quick Start
-
-### 1 — Clone the repo
+### Step 1 — Clone
 
 ```bash
 git clone <your-repo-url>
 cd portfolio
 ```
 
-### 2 — Backend setup
+---
+
+### Step 2 — Backend
 
 ```bash
 cd portfolio_backend
@@ -173,192 +203,236 @@ cd portfolio_backend
 # Install Python dependencies
 pip install -r requirements.txt
 
-# Copy and fill in your environment variables
+# Set up environment variables
 cp .env.example .env
-# Edit .env with your DB credentials
-
-# Create the MySQL database (one-time)
-mysql -u root -p < database/schema.sql
-
-# Apply Django migrations and seed default data
-python manage.py migrate
-
-# Set your admin credentials (also updates skill levels)
-python manage.py setup_admin
-
-# Start the backend server
-python manage.py runserver 8000
+# Open .env and fill in your DB credentials and SECRET_KEY
 ```
 
-### 3 — Frontend setup
-
-```bash
-cd portfolio_frontend
-
-# Install dependencies
-npm install
-
-# Start the dev server
-npm run dev
-```
-
-### 4 — Open in browser
-
-```
-http://localhost:5173
-```
-
----
-
-## Environment Variables
-
-Create `portfolio_backend/.env` from `.env.example`:
-
+**`.env` values to set:**
 ```env
 DB_HOST=localhost
 DB_PORT=3306
 DB_USER=root
 DB_PASS=your_mysql_password
 DB_NAME=portfolio_db
-SECRET_KEY=your-long-random-django-secret-key
+SECRET_KEY=replace-with-a-long-random-string
 DEBUG=True
 ALLOWED_HOSTS=localhost,127.0.0.1
 PORT=8000
 ```
 
-> **Production note:** Set `DEBUG=False`, use a strong `SECRET_KEY`, and restrict `ALLOWED_HOSTS` to your domain.
+```bash
+# Apply migrations — creates all tables and seeds default data automatically
+python manage.py migrate
+
+# Create your admin user (also sets correct skill levels)
+python manage.py setup_admin
+
+# Start the backend
+python manage.py runserver 8000
+```
+
+> `setup_admin` creates the admin user defined in the command file. Default: **`pratikwalunjdev` / `P@ss123`** — change these inside `api/management/commands/setup_admin.py` before running.
 
 ---
 
-## API Reference
+### Step 3 — Frontend
 
-All endpoints are prefixed with `/api/`.
+```bash
+cd portfolio_frontend
 
-### Public (no auth required)
+npm install
+npm run dev
+```
+
+---
+
+### Step 4 — Open in browser
+
+```
+http://localhost:5173
+```
+
+Click the **⚙** button in the bottom-right corner to open the Admin Panel.
+
+---
+
+## 🔑 Environment Variables
+
+| Variable | Required | Description |
+|---|---|---|
+| `DB_HOST` | ✅ | MySQL host (usually `localhost`) |
+| `DB_PORT` | ✅ | MySQL port (default `3306`) |
+| `DB_USER` | ✅ | MySQL username |
+| `DB_PASS` | ✅ | MySQL password |
+| `DB_NAME` | ✅ | Database name (default `portfolio_db`) |
+| `SECRET_KEY` | ✅ | Django secret key — use a long random string in production |
+| `DEBUG` | ✅ | `True` for development, `False` for production |
+| `ALLOWED_HOSTS` | ✅ | Comma-separated list of allowed hosts |
+| `PORT` | — | Server port (default `8000`) |
+
+---
+
+## 📡 API Reference
+
+Base URL: `http://localhost:8000/api`
+
+### Public Endpoints
 
 | Method | Endpoint | Description |
 |---|---|---|
-| `GET` | `/api/portfolio` | Returns all portfolio data in one response |
-| `POST` | `/api/auth/login` | Login — returns JWT access token |
-| `POST` | `/api/contact/message` | Submit contact form |
+| `GET` | `/portfolio` | Returns all portfolio data in one request |
+| `POST` | `/auth/login` | Authenticate — returns a 24 h JWT access token |
+| `POST` | `/contact/message` | Submit the contact form |
 
-### Protected (Bearer token required)
+### Protected Endpoints
+> Add `Authorization: Bearer <token>` header to all requests below.
 
 | Method | Endpoint | Description |
 |---|---|---|
-| `PUT` | `/api/profile` | Update profile (any field, partial update) |
-| `POST` | `/api/projects` | Add project |
-| `DELETE` | `/api/projects/<id>` | Delete project |
-| `POST` | `/api/skills` | Add skill category (or append to existing) |
-| `DELETE` | `/api/skills/<id>` | Delete entire skill category |
-| `PUT` | `/api/skills/item/<id>` | Update skill level / name |
-| `DELETE` | `/api/skills/item/<id>` | Remove individual skill |
-| `POST` | `/api/services` | Add service |
-| `DELETE` | `/api/services/<id>` | Delete service |
-| `PUT` | `/api/contact` | Update contact info |
-| `POST` | `/api/education` | Add education entry |
-| `DELETE` | `/api/education/<id>` | Delete education entry |
-| `POST` | `/api/certifications` | Add certification |
-| `DELETE` | `/api/certifications/<id>` | Delete certification |
-| `GET` | `/api/messages` | List contact form submissions |
-| `PUT` | `/api/messages/<id>/read` | Mark message as read |
+| `PUT` | `/profile` | Update any profile field (partial update supported) |
+| `POST` | `/projects` | Add a project |
+| `DELETE` | `/projects/<id>` | Delete a project |
+| `POST` | `/skills` | Add skills to a category (creates category if new) |
+| `DELETE` | `/skills/<id>` | Delete an entire skill category |
+| `PUT` | `/skills/item/<id>` | Update a skill's `level` or `name` |
+| `DELETE` | `/skills/item/<id>` | Remove a single skill |
+| `POST` | `/services` | Add a service card |
+| `DELETE` | `/services/<id>` | Delete a service card |
+| `PUT` | `/contact` | Update contact info |
+| `POST` | `/education` | Add education entry |
+| `DELETE` | `/education/<id>` | Delete education entry |
+| `POST` | `/certifications` | Add a certification |
+| `DELETE` | `/certifications/<id>` | Delete a certification |
+| `GET` | `/messages` | List all contact form submissions |
+| `PUT` | `/messages/<id>/read` | Mark a message as read |
 
-### Authentication
+### Example — Login and update status
 
 ```bash
 # 1. Get token
 curl -X POST http://localhost:8000/api/auth/login \
   -H "Content-Type: application/json" \
   -d '{"username":"pratikwalunjdev","password":"P@ss123"}'
+# → {"token":"eyJ..."}
 
-# 2. Use token
+# 2. Update availability
 curl -X PUT http://localhost:8000/api/profile \
-  -H "Authorization: Bearer <token>" \
+  -H "Authorization: Bearer eyJ..." \
   -H "Content-Type: application/json" \
   -d '{"status":"busy"}'
 ```
 
 ---
 
-## Admin Panel Guide
+## 🛠️ Admin Panel — Tab Guide
 
-Click the **⚙** button (bottom-right corner) to open the admin panel.
+> Open: click **⚙** button · Bottom-right corner of the page
 
 | Tab | What you can do |
 |---|---|
 | **Profile** | Edit name, role, bio, experience, location, project count |
-| **Availability** | Toggle Available / Busy / Not Available — updates site instantly |
-| **Projects** | Add new projects (name, category, tags, links); delete existing |
-| **Skills** | Drag sliders to set expertise level per skill; remove individual skills; add new categories |
-| **Education** | Add / delete education timeline entries |
-| **Certs** | Add / delete certifications (title, issuer, date, credential URL) |
-| **Contact** | Update email, GitHub, LinkedIn, contact subtitle |
-| **Messages** | Read contact form submissions; mark as read |
+| **Availability** | Toggle Available / Busy / Not Available — updates the hero badge instantly |
+| **Projects** | Add projects with name, category, tags, icon, live URL, GitHub URL; delete existing |
+| **Skills** | Drag range sliders to set expertise level (0–100) per skill; remove individual skills; add new categories with comma-separated items |
+| **Education** | Add/delete timeline entries with degree, institution, duration, grade, description |
+| **Certs** | Add/delete certifications with title, issuer, date, credential URL, description |
+| **Contact** | Update email, GitHub URL, LinkedIn URL, contact section subtitle |
+| **Messages** | View contact form submissions; mark as read |
 
 ---
 
-## Sections
+## 📄 Section Reference
 
-| # | Section | Background |
-|---|---|---|
-| 01 | About | `--bg` (dark) |
-| 02 | Education | `--bg2` (slightly lighter) |
-| 03 | Services | `--bg2` |
-| 04 | Skills | `--bg` |
-| 05 | Projects | `--bg2` |
-| 06 | Certifications | `--bg` |
-| 07 | Contact | `--bg` |
+| # | Section | Route Anchor | Background |
+|---|---|---|---|
+| 01 | About | `#sec-about` | `--bg` |
+| 02 | Education | `#sec-education` | `--bg2` |
+| 03 | Services | `#sec-services` | `--bg2` |
+| 04 | Skills | `#sec-skills` | `--bg` |
+| 05 | Projects | `#sec-projects` | `--bg2` |
+| 06 | Certifications | `#sec-certifications` | `--bg` |
+| 07 | Contact | `#sec-contact` | `--bg` |
 
 ---
 
-## Customisation
+## 🎨 Customisation
 
 ### Typing phrases
-Edit `TYPING_PHRASES` in [portfolio_frontend/src/data.js](portfolio_frontend/src/data.js):
+Edit `TYPING_PHRASES` in [`portfolio_frontend/src/data.js`](portfolio_frontend/src/data.js):
 ```js
 export const TYPING_PHRASES = [
   'Python Developer',
   'Full Stack Developer',
   'React Developer',
-  // ...
+  'Java Developer',
+  'Problem Solver',
+  'Open Source Contributor',
+  'Agentic AI Developer',
 ]
 ```
 
 ### Colour theme
-All CSS variables are in [portfolio_frontend/src/styles.js](portfolio_frontend/src/styles.js):
-```js
---bg:   #0f0f14   // main background
---pu:   #7c3aed   // purple accent
---te:   #00d4b4   // teal accent
+All CSS variables live in [`portfolio_frontend/src/styles.js`](portfolio_frontend/src/styles.js):
+```css
+--bg:   #0f0f14   /* main dark background  */
+--bg2:  #16161f   /* slightly lighter bg   */
+--pu:   #7c3aed   /* purple primary        */
+--pul:  #a78bfa   /* purple light          */
+--te:   #00d4b4   /* teal accent           */
+--tx:   #f0f0f8   /* primary text          */
+--tx2:  #b0b0c8   /* secondary text        */
 ```
 
-### Skill brand colours
-Extend `SKILL_COLORS` and `SKILL_ABBR` in [portfolio_frontend/src/data.js](portfolio_frontend/src/data.js) to add logos for new skills.
+### Skill brand colours & abbreviations
+Add entries to `SKILL_COLORS` and `SKILL_ABBR` in [`portfolio_frontend/src/data.js`](portfolio_frontend/src/data.js) to support new skills with their brand colours and two-letter abbreviations.
 
 ---
 
-## Production Build
+## 🏗️ Production Build
 
 ```bash
 # Build the frontend
 cd portfolio_frontend
 npm run build
-# Outputs to portfolio_frontend/dist/
+# → outputs to portfolio_frontend/dist/
 
-# Serve Django with gunicorn (example)
+# Serve with gunicorn
 cd portfolio_backend
 pip install gunicorn
 gunicorn portfolio_project.wsgi:application --bind 0.0.0.0:8000
 ```
 
-> Configure Django to serve the `dist/` folder as static files, or deploy the frontend separately to Vercel / Netlify and point `CORS_ALLOWED_ORIGINS` to its URL.
+For production, set in `.env`:
+```env
+DEBUG=False
+SECRET_KEY=<long-random-string>
+ALLOWED_HOSTS=yourdomain.com
+```
+
+And update `CORS_ALLOWED_ORIGINS` in `settings.py` to your frontend's URL.
 
 ---
 
-## License
+## 📋 Running Commands Summary
 
-MIT — free to use, modify, and distribute.
+```bash
+# First-time setup
+python manage.py migrate          # Create tables + seed default data
+python manage.py setup_admin      # Create admin user + set skill levels
+
+# Daily development
+python manage.py runserver 8000   # Start backend
+npm run dev                        # Start frontend (in portfolio_frontend/)
+
+# Re-seed (if data was deleted)
+python manage.py setup_admin      # Safe to run multiple times
+```
 
 ---
 
-*Built with React, Django, and MySQL.*
+<div align="center">
+
+**Built with React · Django · MySQL**
+
+</div>
