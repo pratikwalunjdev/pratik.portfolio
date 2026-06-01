@@ -23,36 +23,36 @@
     <td align="center" width="50%">
       <b>🏠 Hero Section</b><br/>
       <sub>Typing animation · Animated terminal widget · Status badge</sub><br/><br/>
-      <code>docs/screenshots/hero.png</code>
+      <code>docs/screenshots/hero.jpeg</code>
     </td>
     <td align="center" width="50%">
       <b>🎓 Education — Roadmap Timeline</b><br/>
       <sub>Animated nodes · Growing connector lines · Staggered card reveals</sub><br/><br/>
-      <code>docs/screenshots/education.png</code>
+      <code>docs/screenshots/education.jpeg</code>
     </td>
   </tr>
   <tr>
     <td align="center">
       <b>⚡ Skills — Expertise Meters</b><br/>
       <sub>Progress bars per skill · Expert/Advanced/Intermediate badges · Infinite marquee</sub><br/><br/>
-      <code>docs/screenshots/skills.png</code>
+      <code>docs/screenshots/skills.jpeg</code>
     </td>
     <td align="center">
       <b>🚀 Projects</b><br/>
       <sub>Filterable grid · Stylised name thumbnail · Live & GitHub links</sub><br/><br/>
-      <code>docs/screenshots/projects.png</code>
+      <code>docs/screenshots/projects.jpeg</code>
     </td>
   </tr>
   <tr>
     <td align="center">
       <b>🏆 Certifications</b><br/>
       <sub>Scroll-triggered entrance · Accent bar animation · Credential links</sub><br/><br/>
-      <code>docs/screenshots/certifications.png</code>
+      <code>docs/screenshots/certifications.jpeg</code>
     </td>
     <td align="center">
       <b>⚙️ Admin Panel — Skill Sliders</b><br/>
       <sub>Drag to set level · Debounced auto-save · Live label badge</sub><br/><br/>
-      <code>docs/screenshots/admin_skills.png</code>
+      <code>docs/screenshots/admin_skills.jpeg</code>
     </td>
   </tr>
 </table>
