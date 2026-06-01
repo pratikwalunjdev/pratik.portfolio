@@ -16,7 +16,7 @@
 
 ## 📸 Screenshots
 
-> **To add real screenshots** — save images to `docs/screenshots/` with the names shown below and they will appear here automatically.
+> **To see real screenshots** — see images to `docs/screenshots/` with the names shown below.
 
 <table>
   <tr>
